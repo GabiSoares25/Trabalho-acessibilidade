@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arte Indígena Brasileira — Trabalho para Fins Educativos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pinetree: '#202808',
+                        kombu: '#33432B',
+                        dingley: '#6A784D',
+                        brandy: '#DEC59E',
+                        palecopper: '#C4866D',
+                        editorial: {
+                            bg: '#FBF8F3',        /* Warm off-white background */
+                            card: '#F3EBD9',      /* Soft Brandy tint card bg */
+                            dark: '#202808',      /* Pine Tree */
+                            accent: '#C4866D',    /* Pale Copper */
+                            terracotta: '#6A784D',/* Dingley Green */
+                            gold: '#DEC59E',      /* Brandy */
+                            muted: '#33432B'      /* Kombu Green */
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* High Contrast Theme Styles */
+        .high-contrast {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+        }
+        .high-contrast h1,
+        .high-contrast h2,
+        .high-contrast h3,
+        .high-contrast h4,
+        .high-contrast h5,
+        .high-contrast h6 {
+            color: #ffff00 !important;
+        }
+        .high-contrast section, 
+        .high-contrast div, 
+        .high-contrast article, 
+        .high-contrast header, 
+        .high-contrast footer,
+        .high-contrast nav {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+            border-color: #ffff00 !important;
+        }
+        .high-contrast button, 
+        .high-contrast a {
+            background-color: #000000 !important;
+            color: #ffff00 !important;
+            border: 2px solid #ffff00 !important;
+            text-decoration: underline !important;
+        }
+        .high-contrast button:hover, 
+        .high-contrast button:focus,
+        .high-contrast a:hover,
+        .high-contrast a:focus {
+            background-color: #ffff00 !important;
+            color: #000000 !important;
+        }
+
+        /* Focus outlines for accessibility */
+        :focus-visible {
+            outline: 3px solid #DEC59E !important;
+            outline-offset: 3px !important;
+        }
+
+        /* Fine decorative line styling inspired by editorial layout */
+        .editorial-border {
+            border-top: none;
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body class="bg-editorial-bg text-pinetree font-sans transition-colors duration-300">
+
+    <!-- EDITORIAL HEADER -->
+    <div class="bg-editorial-bg border-b border-brandy/60">
+
+        <!-- TOP COVER HERO IMAGE BANNER -->
+        <div class="relative h-[380px] md:h-[480px] w-full overflow-hidden bg-pinetree">
+            <img src="https://elysium.org.br/wp-content/uploads/2024/02/saofelix-exbra0111.jpg" 
+                 alt="Arte e cultura indígena brasileira" 
+                 class="w-full h-full object-cover opacity-50 filter saturate-150" />
+            <div class="absolute inset-0 bg-gradient-to-t from-pinetree via-pinetree/60 to-transparent flex flex-col items-center justify-center text-center p-6">
+                <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl text-editorial-bg font-light tracking-wide max-w-4xl leading-tight">
+                    Arte Indígena Brasileira
+                </h1>
+            </div>
+        </div>
+
+        <!-- BARRA DE ACESSIBILIDADE (TAMANHO DE FONTE E CORES) -->
+        <div class="bg-pinetree border-b border-brandy/30 py-2.5 px-4 sm:px-8 text-brandy text-xs flex flex-wrap items-center justify-between gap-3 z-30 relative">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-universal-access text-palecopper text-sm" aria-hidden="true"></i>
+                <span class="font-medium tracking-wider uppercase text-[11px]">Acessibilidade</span>
+            </div>
+            <div class="flex items-center gap-4 flex-wrap">
+                <!-- Font Size Controls -->
+                <div class="flex items-center gap-1 bg-kombu/70 px-2 py-1 rounded border border-brandy/30">
+                    <span class="text-[10px] uppercase font-semibold text-brandy/80 mr-1">Fonte:</span>
+                    <button onclick="changeFontSize(-5)" class="px-2 py-0.5 hover:bg-palecopper hover:text-pinetree rounded transition font-bold" title="Diminuir tamanho do texto">A-</button>
+                    <button onclick="changeFontSize(0)" class="px-2 py-0.5 hover:bg-palecopper hover:text-pinetree rounded transition font-bold" title="Tamanho normal do texto">A</button>
+                    <button onclick="changeFontSize(5)" class="px-2 py-0.5 hover:bg-palecopper hover:text-pinetree rounded transition font-bold" title="Aumentar tamanho do texto">A+</button>
+                </div>
+                <!-- Color Theme Controls -->
+                <div class="flex items-center gap-1 bg-kombu/70 px-2 py-1 rounded border border-brandy/30">
+                    <span class="text-[10px] uppercase font-semibold text-brandy/80 mr-1">Tema:</span>
+                    <button onclick="setTheme('default')" class="px-2 py-0.5 hover:bg-brandy hover:text-pinetree rounded transition text-[11px]" title="Tema Padrão">Padrão</button>
+                    <button onclick="setTheme('dark')" class="px-2 py-0.5 bg-black text-yellow-300 hover:bg-yellow-400 hover:text-black rounded transition text-[11px] font-bold border border-yellow-300/40" title="Tema Escuro / Alto Contraste">Escuro</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN EDITORIAL NAVIGATION BAR -->
+        <nav class="py-6 px-6 sm:px-12 md:px-20 text-center border-b border-brandy/60 bg-editorial-bg sticky top-0 z-40" aria-label="Navegação do site">
+            <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-6 text-xs md:text-sm font-semibold tracking-[0.2em] text-pinetree uppercase">
+                <a href="#introducao" class="hover:text-palecopper transition py-1">Introdução</a>
+                <span class="text-dingley/40" aria-hidden="true">|</span>
+                <a href="#ceramicas" class="hover:text-palecopper transition py-1">Cerâmicas</a>
+                <span class="text-dingley/40" aria-hidden="true">|</span>
+                <a href="#arte-plumaria" class="hover:text-palecopper transition py-1">Arte Plumária</a>
+                <span class="text-dingley/40" aria-hidden="true">|</span>
+                <a href="#cestaria" class="hover:text-palecopper transition py-1">Cestaria</a>
+                <span class="text-dingley/40" aria-hidden="true">|</span>
+                <a href="#mascaras" class="hover:text-palecopper transition py-1">Máscaras</a>
+                <span class="text-dingley/40" aria-hidden="true">|</span>
+                <a href="#pintura-corporal" class="hover:text-palecopper transition py-1">Pintura Corporal</a>
+                <span class="text-dingley/40" aria-hidden="true">|</span>
+                <a href="#conclusao" class="hover:text-palecopper transition py-1">Conclusão</a>
+            </div>
+        </nav>
+
+    </div>
+
+    <main id="conteudo-principal" class="max-w-7xl mx-auto px-8 sm:px-16 md:px-24 lg:px-32 py-16 space-y-28">
+
+        <!-- SECTION 0: INTRODUÇÃO E IDENTIDADE -->
+        <section id="introducao" class="scroll-mt-24 py-4">
+            <div class="grid md:grid-cols-12 gap-10 lg:gap-14 items-start">
+                
+                <!-- Left Column: Editorial Text Block -->
+                <div class="md:col-span-6 space-y-6 order-1">
+                    <div id="desc-introducao" class="space-y-4 text-pinetree/80 text-sm md:text-base leading-relaxed font-sans pr-2">
+                        <p>
+                            A arte indígena brasileira é uma das peças fundamentais para a nossa identidade como brasileiros. Se encontra presente no linguajar diário, em ornamentos para sua casa e até no nosso DNA, ou pelo menos para a maioria de nós.
+                        </p>
+                        <p>
+                            Suas artes vêm sendo injustiçadas desde que caídas nas mãos dos europeus. Os próprios grupos foram reprimidos, sequestrados, sua cultura queimada e roubada sendo apagada de muitos momentos de suas histórias. Entretanto, alguns povos ainda foram capazes de preservar suas culturas, hoje a podendo praticar e manter a tradição viva.
+                        </p>
+                        <p>
+                            Cerâmica, plumagens, cestarias, máscaras e pinturas corporais são apenas alguns dos elementos que compõem a rica arte indígena brasileira. Karajás, Waujas, Asurinís, Kadiwéu, Xikrin e entre outros são apenas alguns dos povos, e suas artes, que serão citadas e aprofundadas.
+                        </p>
+
+                        <!-- AUDIODESCRIÇÃO DAS IMAGENS DA INTRODUÇÃO -->
+                        <div class="mt-4 pt-3 border-t border-brandy/30 text-xs text-pinetree/70 flex items-start gap-2">
+                            <i class="fa-solid fa-eye text-palecopper mt-0.5" aria-hidden="true"></i>
+                            <span><strong>Audiodescrição das imagens:</strong> A primeira imagem mostra um rosto com complexos grafismos simétricos pretos e vermelhos do povo Kadiwéu. A segunda imagem exibe uma tela colorida do coletivo artístico Mahku, representando mitos e visões com traços vibrantes e figurativos.</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <button onclick="toggleAudioDescription('desc-introducao', this)" 
+                                class="btn-audio-desc px-6 py-3 bg-pinetree text-brandy text-xs font-semibold uppercase tracking-widest hover:bg-palecopper hover:text-pinetree transition shadow-md flex items-center gap-3">
+                            <i class="fa-solid fa-volume-high text-brandy" aria-hidden="true"></i>
+                            <span>Ouvir Audiodescrição</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Staggered Editorial Images composition -->
+                <div class="md:col-span-6 flex justify-center items-center order-2">
+                    <div class="relative w-full max-w-2xl mx-auto py-2">
+                        <!-- Top Image -->
+                        <div class="relative z-10 w-11/12 ml-auto shadow-lg bg-editorial-card border border-brandy/60 p-2.5">
+                            <img src="https://mirim.org/sites/default/files/2020-10/kadiweu_12.jpg" 
+                                 alt="Pintura corporal e grafismo Kadiwéu" 
+                                 onerror="this.src='https://placehold.co/600x800/202808/DEC59E?text=Arte+Ind%C3%ADgena'" 
+                                 class="w-full h-auto max-h-[500px] object-cover filter brightness-95" />
+                        </div>
+                        <!-- Staggered Bottom Image (Arte Mahku) -->
+                        <div class="relative z-20 w-11/12 -mt-16 mr-auto shadow-xl bg-editorial-card border border-brandy/60 p-2.5">
+                            <img src="https://forum21br.com.br/wp-content/uploads/2023/07/Arte-indi-Mahku.jpg" 
+                                 alt="Arte Indígena Mahku" 
+                                 onerror="this.src='https://placehold.co/600x600/202808/DEC59E?text=Arte+Mahku'" 
+                                 class="w-full h-auto max-h-[500px] object-cover filter brightness-95" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 1: CERÂMICAS -->
+        <section id="ceramicas" class="scroll-mt-24 py-8">
+            <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
+                <!-- Left Column: Staggered Ceramic Images Composition -->
+                <div class="md:col-span-6 order-2 md:order-1 flex justify-center items-center">
+                    <div class="relative w-full max-w-lg mx-auto py-2">
+                        <!-- Top Image -->
+                        <div class="relative z-10 w-10/12 ml-auto shadow-lg bg-editorial-card border border-brandy/60 p-2.5">
+                            <img src="https://portalamazonia.com/wp-content/uploads/2021/09/b2ap3_medium_2-1.jpeg" 
+                                 alt="Cerâmica Indígena Amazônica" 
+                                 onerror="this.src='https://placehold.co/600x400/202808/DEC59E?text=Cer%C3%A2mica+Ind%C3%ADgena'" 
+                                 class="w-full h-auto max-h-[380px] object-cover filter brightness-95" />
+                        </div>
+                        <!-- Staggered Bottom Image (Moved to the left) -->
+                        <div class="relative z-20 w-10/12 -mt-12 mr-auto shadow-xl bg-editorial-card border border-brandy/60 p-2.5">
+                            <img src="https://cdn.lugares.eco.br/upload/dn_noticia/2017/07/1501337751.jpg" 
+                                 alt="Peça de Cerâmica Indígena Tradicional" 
+                                 onerror="this.src='https://placehold.co/600x400/202808/DEC59E?text=Arte+em+Cer%C3%A2mica'" 
+                                 class="w-full h-auto max-h-[380px] object-cover filter brightness-95" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Text Content & Audio Button -->
+                <div class="md:col-span-6 order-1 md:order-2 space-y-6 text-right flex flex-col items-end">
+                    <div class="space-y-5 px-2">
+                        <h2 class="font-serif text-3xl sm:text-5xl font-light text-pinetree leading-snug">
+                            Cerâmicas
+                        </h2>
+                        <div id="desc-ceramicas" class="text-pinetree/80 text-sm md:text-base leading-relaxed space-y-4">
+                            <p>
+                                São feitas totalmente à mão, à base de barro e sem o uso de torno ou roda de oleiro, cujo intuito era armazenar grãos, água e bebidas, cozinhar direto no fogo e realizar a sepultação dos mortos. Surgiram por volta de 5 a 8 mil anos atrás na região amazônica, durante a transição dos povos nômades para o sedentarismo.<br/><br/>
+                                Os dois povos mais populares no quesito de sofisticação técnica em cerâmicas são: os da Ilha de Marajó, cuja produção especula-se ter sido iniciada por volta de 400 d.C., destacando-se por conter relevos, incisões profundas e grafismos geométricos em vermelho e branco; e a cerâmica Tapajônica, constituída por pequenos vasos com esculturas de animais da floresta e figuras humanas.
+                            </p>
+                            <div class="mt-4 pt-3 border-t border-brandy/30 text-xs text-pinetree/70 flex items-start gap-2 text-left">
+                                <i class="fa-solid fa-eye text-palecopper mt-0.5" aria-hidden="true"></i>
+                                <span><strong>Audiodescrição das imagens:</strong> Vasos e urnas cerâmicas tradicionais com entalhes minuciosos, relevos antropomórficos e grafismos geométricos em tons terrosos, avermelhados e brancos das tradições Marajoara e Tapajônica.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 px-2">
+                        <button onclick="toggleAudioDescription('desc-ceramicas', this)" 
+                                class="btn-audio-desc px-6 py-3 bg-pinetree text-brandy text-xs font-semibold uppercase tracking-widest hover:bg-dingley hover:text-white transition shadow-md flex items-center gap-3">
+                            <i class="fa-solid fa-volume-high text-brandy" aria-hidden="true"></i>
+                            <span>Ouvir Audiodescrição</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1.5: ARTE PLUMÁRIA -->
+        <section id="arte-plumaria" class="scroll-mt-24 py-8">
+            <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
+                <!-- Left Column: Text & Audio Button -->
+                <div class="md:col-span-7 space-y-6">
+                    <div class="space-y-5 px-2">
+                        <h2 class="font-serif text-3xl sm:text-5xl font-light text-pinetree leading-snug">
+                            Arte Plumária
+                        </h2>
+                        <div id="desc-plumaria" class="text-pinetree/80 text-sm md:text-base leading-relaxed space-y-4">
+                            <p>
+                                É uma manifestação antiga que constitui grande parte da cultura das Américas, carregando diversos significados: ritualísticos, casamentos, luto e identificação social na hierarquia, clãs e funções comunitárias.<br/><br/>
+                                O destaque vai para povos como os Bororo, Karajá e Rikbaktsa, que as produziam, no geral, desta forma: primeiramente, as penas eram obtidas de pássaros caçados para a alimentação. Outra técnica marcante era a <strong>Tapiragem</strong>, que consistia em, após arrancar as penas verdes de uma arara, aplicar secreções de anfíbios em sua pele para que nascessem amarelas ou vermelhas. A confecção era feita cortando e ajustando essas penas até alcançar a simetria ideal, amarrando-as ou colando-as em estruturas de fibra de algodão.
+                            </p>
+                            <div class="mt-4 pt-3 border-t border-brandy/30 text-xs text-pinetree/70 flex items-start gap-2">
+                                <i class="fa-solid fa-eye text-palecopper mt-0.5" aria-hidden="true"></i>
+                                <span><strong>Audiodescrição das imagens:</strong> Adornos e diademas feitos com penas azuis, amarelas e vermelhas dispostas de forma radiada e simétrica sobre estruturas de fibras trançadas.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 px-2">
+                        <button onclick="toggleAudioDescription('desc-plumaria', this)" 
+                                class="btn-audio-desc px-6 py-3 bg-pinetree text-brandy text-xs font-semibold uppercase tracking-widest hover:bg-palecopper hover:text-pinetree transition shadow-md flex items-center gap-3">
+                            <i class="fa-solid fa-volume-high text-brandy" aria-hidden="true"></i>
+                            <span>Ouvir Audiodescrição</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Staggered Images Composition -->
+                <div class="md:col-span-5 flex justify-center items-center">
+                    <div class="relative w-full max-w-md mx-auto py-2">
+                        <!-- Top Image -->
+                        <div class="relative z-10 w-11/12 mr-auto shadow-lg bg-editorial-card border border-brandy/60 p-2.5">
+                            <img src="https://static.todamateria.com.br/upload/55/10/55109f4037f92-arte-plumaria.jpg" 
+                                 alt="Arte Plumária Indígena" 
+                                 onerror="this.src='https://placehold.co/600x400/202808/DEC59E?text=Arte+Plum%C3%A1ria'" 
+                                 class="w-full h-auto max-h-[380px] object-cover filter brightness-95" />
+                        </div>
+                        <!-- Bottom Image (Diadema) -->
+                        <div class="relative z-20 w-11/12 -mt-12 ml-auto shadow-xl bg-editorial-card border border-brandy/60 p-2.5">
+                            <img src="https://mundoeducacao.uol.com.br/upload/conteudo/diadema-arte-plumaria(1).jpg" 
+                                 alt="Diadema de Arte Plumária" 
+                                 onerror="this.src='https://placehold.co/600x400/202808/DEC59E?text=Diadema+Arte+Plum%C3%A1ria'" 
+                                 class="w-full h-auto max-h-[380px] object-cover filter brightness-95" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1.6: CESTARIA E TRANÇADOS -->
+        <section id="cestaria" class="scroll-mt-24 py-8">
+            <div class="grid md:gap-12 md:grid-cols-12 gap-8 items-start">
+                <!-- Left Column: Basketry Staggered Image Container -->
+                <div class="md:col-span-5 flex justify-center items-center md:order-1 order-2">
+                    <div class="relative py-2 mx-auto w-full max-w-md">
+                        <!-- Top Image -->
+                        <div class="relative z-10 border-brandy/60 bg-editorial-card p-2.5 border shadow-lg mr-auto w-11/12">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa8_0ahC2KE_h_4In0URTJrhrBsVgWWyNXI4_qm4BN2sEl8CfeAmC69jje&s=10" 
+                                 alt="Trança e Cestaria Indígena em Palha" 
+                                 referrerpolicy="no-referrer"
+                                 onerror="this.src='https://placehold.co/600x400/202808/DEC59E?text=Tran%C3%A7ado+Ind%C3%ADgena'" 
+                                 class="filter brightness-95 object-cover w-full h-auto max-h-[380px]" />
+                        </div>
+                        <!-- Bottom Image (Requested Image) -->
+                        <div class="relative z-20 border-brandy/60 bg-editorial-card p-2.5 border shadow-xl -mt-12 ml-auto w-11/12">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRrGqQ59g7E7_Hqi8r5MChOVDPc7CupEhIjbl989G9YA&s=10" 
+                                 alt="Cestaria e Trançados Indígenas" 
+                                 referrerpolicy="no-referrer"
+                                 onerror="this.src='https://placehold.co/600x400/202808/DEC59E?text=Cestaria+Ind%C3%ADgena'" 
+                                 class="filter brightness-95 object-cover w-full h-auto max-h-[380px]" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Text & Audio Button -->
+                <div class="md:col-span-7 order-1 md:order-2 space-y-6">
+                    <div class="space-y-5 px-2">
+                        <h2 class="font-serif text-3xl sm:text-5xl font-light text-pinetree leading-snug">
+                            Cestaria
+                        </h2>
+                        <div id="desc-cestaria" class="text-pinetree/80 text-sm md:text-base leading-relaxed space-y-4">
+                            <p>
+                                Surgiu por volta do período pré-colonial, junto ao desenvolvimento de técnicas de manejo agrícola e à domesticação de plantas na Amazônia e no Pantanal. Considerada um dos sistemas de trançado mais complexos do mundo, a cestaria foi criada com a motivação de transportar itens volumosos — como legumes, frutos e coletas da floresta —, além de dar origem ao <strong>tipiti</strong> (espremedor de palha usado para remover o veneno da mandioca-brava) e a utensílios para guardar pertences pessoais ou sementes.<br/><br/>
+                                Povos como os Baniwa, Ye'kuana e Guarani confeccionavam, no geral, desta maneira: primeiramente, colhiam a palha das palmeiras; em seguida, as fibras eram limpas e algumas podiam ser até fervidas com corantes naturais; por fim, eram trançadas em relevos que narram os mitos cosmológicos da tribo.
+                            </p>
+                            <div class="mt-4 pt-3 border-t border-brandy/30 text-xs text-pinetree/70 flex items-start gap-2">
+                                <i class="fa-solid fa-eye text-palecopper mt-0.5" aria-hidden="true"></i>
+                                <span><strong>Audiodescrição das imagens:</strong> Cestos, peneiras e recipientes artesanais trançados em fibra vegetal e palha de palmeira, exibindo padrões geométricos cruzados em tons naturais de bege e marrom.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 px-2">
+                        <button onclick="toggleAudioDescription('desc-cestaria', this)" 
+                                class="btn-audio-desc px-6 py-3 bg-pinetree text-brandy text-xs font-semibold uppercase tracking-widest hover:bg-palecopper hover:text-pinetree transition shadow-md flex items-center gap-3">
+                            <i class="fa-solid fa-volume-high text-brandy" aria-hidden="true"></i>
+                            <span>Ouvir Audiodescrição</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1.7: MÁSCARAS -->
+        <section id="mascaras" class="scroll-mt-24 py-8">
+            <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
+                <!-- Left Column: Text & Audio Button -->
+                <div class="md:col-span-7 space-y-6">
+                    <div class="space-y-5 px-2">
+                        <h2 class="font-serif text-3xl sm:text-5xl font-light text-pinetree leading-snug">
+                            Máscaras
+                        </h2>
+                        <div id="desc-mascaras" class="text-pinetree/80 text-sm md:text-base leading-relaxed space-y-4">
+                            <p>
+                                As máscaras estão fortemente relacionadas a povos específicos, como os Waurá e Mehinako, no Alto Xingu (MT), e os Tikuna e Tapirapé, na Amazônia. Seu propósito tem âmbito sagrado e sobrenatural, servindo para:
+                            </p>
+                            <ul class="list-disc pl-6 space-y-2">
+                                <li><strong>Materialização de espíritos:</strong> a máscara não esconde a face de quem a veste, mas transforma o indivíduo na própria entidade divina, espírito da floresta ou ancestral enquanto a utiliza;</li>
+                                <li><strong>Cura ou apaziguamento:</strong> sendo utilizada para curar membros da comunidade ou pedir permissão à natureza para pescar e caçar;</li>
+                                <li><strong>Entretenimento ritual:</strong> representando seres cômicos em cerimônias longas.</li>
+                            </ul>
+                            <p>
+                                Sua produção é um segredo guardado pelos homens da tribo que as confeccionam. Tudo o que se sabe é que suas bases são, usualmente, esculpidas em madeira ou trançadas em fibras de buriti que cobrem o corpo do dançarino, sendo revestidas com pele de animal, cera de abelha e penas. Após o fim de sua utilidade na cerimônia, elas são guardadas na "Casa dos Homens" (cuja entrada é permitida apenas para homens adultos da tribo) ou queimadas.
+                            </p>
+                            <div class="mt-4 pt-3 border-t border-brandy/30 text-xs text-pinetree/70 flex items-start gap-2">
+                                <i class="fa-solid fa-eye text-palecopper mt-0.5" aria-hidden="true"></i>
+                                <span><strong>Audiodescrição das imagens:</strong> Máscaras ritualísticas sagradas em fibra de buriti e madeira entalhada, cobertas por pigmentos naturais e detalhes expressivos que representam entidades e espíritos da floresta.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 px-2">
+                        <button onclick="toggleAudioDescription('desc-mascaras', this)" 
+                                class="btn-audio-desc px-6 py-3 bg-pinetree text-brandy text-xs font-semibold uppercase tracking-widest hover:bg-palecopper hover:text-pinetree transition shadow-md flex items-center gap-3">
+                            <i class="fa-solid fa-volume-high text-brandy" aria-hidden="true"></i>
+                            <span>Ouvir Audiodescrição</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Masks Image Container (Staggered Layout) -->
+                <div class="md:col-span-5 flex justify-center items-center">
+                    <div class="relative w-full max-w-md mx-auto py-2">
+                        <!-- Top Image -->
+                        <div class="relative z-10 w-11/12 mr-auto shadow-lg bg-editorial-card border border-brandy/60 p-2.5">
+                            <img src="https://static.dw.com/image/76646932_804.jpg" 
+                                 alt="Máscara Ritualística Indígena" 
+                                 referrerpolicy="no-referrer"
+                                 onerror="this.src='https://placehold.co/600x400/202808/DEC59E?text=M%C3%A1scaras+Ind%C3%ADgenas'" 
+                                 class="w-full h-auto max-h-[380px] object-cover filter brightness-95" />
+                        </div>
+                        <!-- Bottom Image (Nova Máscara Bororo) -->
+                        <div class="relative z-20 w-11/12 -mt-12 ml-auto shadow-xl bg-editorial-card border border-brandy/60 p-2.5">
+                            <img src="https://www.artesintonia.com.br/cdn/shop/files/CR583-27-mascara-indigena-decorativa-etnia-bororo-artesanato-brasileiro-curral-cor-minas-gerais-prados-madeira-decoracao-brasileira-design-autoral-loja-artesintonia-2.jpg?v=1745987984" 
+                                 alt="Máscara Indígena Bororo em Madeira" 
+                                 referrerpolicy="no-referrer"
+                                 onerror="this.src='https://placehold.co/600x400/202808/DEC59E?text=M%C3%A1scara+Bororo'" 
+                                 class="w-full h-auto max-h-[380px] object-cover filter brightness-95" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1.8: PINTURA CORPORAL -->
+        <section id="pintura-corporal" class="scroll-mt-24 py-8">
+            <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
+                <!-- Left Column: Image Composition -->
+                <div class="md:col-span-5 flex justify-center items-center md:order-1 order-2">
+                    <div class="relative w-full max-w-md mx-auto py-2">
+                        <!-- Top Image -->
+                        <div class="relative z-10 w-11/12 mr-auto shadow-lg bg-editorial-card border border-brandy/60 p-2.5">
+                            <img src="https://i.pinimg.com/736x/f4/aa/48/f4aa48743ef1e261e33c06873b350339.jpg" 
+                                 alt="Pintura Corporal Indígena Kadiwéu" 
+                                 referrerpolicy="no-referrer"
+                                 onerror="this.src='https://placehold.co/600x400/202808/DEC59E?text=Pintura+Corporal'" 
+                                 class="w-full h-auto max-h-[380px] object-cover filter brightness-95" />
+                        </div>
+                        <!-- Bottom Image -->
+                        <div class="relative z-20 w-11/12 -mt-12 ml-auto shadow-xl bg-editorial-card border border-brandy/60 p-2.5">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh51kGVqu2fYNii15w-dbz4NEU7u_T6Y0RyfK1jr6rLg&s=10" 
+                                 alt="Grafismo e Pintura Corporal Indígena" 
+                                 referrerpolicy="no-referrer"
+                                 onerror="this.src='https://placehold.co/600x400/202808/DEC59E?text=Grafismo+Ind%C3%ADgena'" 
+                                 class="w-full h-auto max-h-[380px] object-cover filter brightness-95" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Text & Audio Button -->
+                <div class="md:col-span-7 order-1 md:order-2 space-y-6">
+                    <div class="space-y-5 px-2">
+                        <h2 class="font-serif text-3xl sm:text-5xl font-light text-pinetree leading-snug">
+                            Pintura Corporal
+                        </h2>
+                        <div id="desc-pintura" class="text-pinetree/80 text-sm md:text-base leading-relaxed space-y-4">
+                            <p>
+                                Sendo a marca registrada de povos como os Kayapó, Xavante e Yanomami, a pintura corporal surgiu com finalidades semelhantes às da arte plumária, podendo indicar desde o status social e civil — como luto, prontidão para o casamento, condição de guerreiro ou celebração de festas — até a proteção física e espiritual, atuando como repelente contra insetos, protetor solar e escudo contra maus espíritos.
+                            </p>
+                            <p>
+                                Embora as técnicas variem entre as etnias, geralmente utiliza-se uma solução de genipapo moído (que se fixa à pele por cerca de duas semanas) e outra de urucum (de tonalidade vermelha, removível com água). Os traços são aplicados com talas de palha, gravetos, com as próprias mãos ou por meio de carimbos esculpidos em caroços de frutas, mantendo padrões finos e simétricos.
+                            </p>
+                            <p>
+                                Ao final, a pintura baseia-se em grafismos que imitam texturas da natureza — como a pele da jiboia ou o casco do jabuti —, em que cada padrão carrega seus próprios significados simbólicos e culturais.
+                            </p>
+                            <div class="mt-4 pt-3 border-t border-brandy/30 text-xs text-pinetree/70 flex items-start gap-2">
+                                <i class="fa-solid fa-eye text-palecopper mt-0.5" aria-hidden="true"></i>
+                                <span><strong>Audiodescrição das imagens:</strong> Padrões detalhados de grafismos geométricos traçados na pele com tintas pretas de genipapo e avermelhadas de urucum, simbolizando proteção e identidade do povo Kadiwéu.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 px-2">
+                        <button onclick="toggleAudioDescription('desc-pintura', this)" 
+                                class="btn-audio-desc px-6 py-3 bg-pinetree text-brandy text-xs font-semibold uppercase tracking-widest hover:bg-palecopper hover:text-pinetree transition shadow-md flex items-center gap-3">
+                            <i class="fa-solid fa-volume-high text-brandy" aria-hidden="true"></i>
+                            <span>Ouvir Audiodescrição</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: CONCLUSÃO -->
+        <section id="conclusao" class="scroll-mt-24 py-8">
+            <div class="bg-editorial-card border border-brandy/60 p-8 sm:p-12 shadow-sm max-w-4xl mx-auto space-y-8">
+                <div class="text-center space-y-3">
+                    <span class="text-palecopper text-2xl" aria-hidden="true"><i class="fa-solid fa-feather-pointed"></i></span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-light text-pinetree leading-snug">
+                        Conclusão
+                    </h2>
+                    <div class="w-16 h-0.5 bg-brandy mx-auto"></div>
+                </div>
+
+                <div id="desc-conclusao" class="text-pinetree/85 text-sm md:text-base leading-relaxed space-y-4 font-sans text-justify sm:text-left">
+                    <p>
+                        Preservar as culturas dos povos nativos é um ato de justiça histórica e uma garantia para o futuro do planeta. Os povos indígenas guardam em suas línguas, mitologias e artes — como a cerâmica, a cestaria e as pinturas corporais — uma herança cultural imensurável que enriquece a diversidade da humanidade.
+                    </p>
+                    <p>
+                        Além disso, os povos originários são os maiores guardiões da biodiversidade global. Seus conhecimentos tradicionais sobre manejo sustentável, plantas medicinais e equilíbrio ecológico oferecem soluções vitais para as crises climáticas atuais. Proteger essas culturas significa defender os direitos humanos, valorizar a nossa própria identidade coletiva e manter viva uma sabedoria que sabe habitar a Terra sem destruí-la.
+                    </p>
+                </div>
+
+                <!-- FONTES E REFERÊNCIAS -->
+                <div class="border-t border-brandy/40 pt-6 space-y-3">
+                    <h3 class="font-serif text-xl text-pinetree font-semibold flex items-center gap-2">
+                        <i class="fa-solid fa-book-bookmark text-palecopper text-sm" aria-hidden="true"></i>
+                        Fontes e Referências
+                    </h3>
+                    <ul class="text-xs sm:text-sm text-pinetree/80 space-y-2 list-disc pl-5">
+                        <li><strong>IPHAN e Museu do Índio (FUNAI):</strong> Histórico das técnicas artísticas.</li>
+                        <li><strong>Enciclopédia dos Povos Indígenas no Brasil (ISA - Instituto Socioambiental):</strong> Dados sobre as etnias.</li>
+                        <li><strong>Museu Paraense Emílio Goeldi:</strong> Pesquisas arqueológicas sobre a cerâmica na Amazônia.</li>
+                        <li><strong>Relatórios do IPCC (ONU) e MapBiomas:</strong> Dados sobre a proteção das florestas por terras indígenas.</li>
+                    </ul>
+                </div>
+
+                <div class="pt-2 flex justify-center">
+                    <button onclick="toggleAudioDescription('desc-conclusao', this)" 
+                            class="btn-audio-desc px-6 py-3 bg-pinetree text-brandy text-xs font-semibold uppercase tracking-widest hover:bg-palecopper hover:text-pinetree transition shadow-md flex items-center gap-3">
+                        <i class="fa-solid fa-volume-high text-brandy" aria-hidden="true"></i>
+                        <span>Ouvir Audiodescrição</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPONSORS / ETNIAS ROW -->
+        <section class="py-12 border-t border-brandy/40">
+            <div class="text-center mb-6">
+                <span class="text-[10px] tracking-[0.3em] font-bold text-dingley uppercase">Tradições & Povos Representados</span>
+            </div>
+            <div class="flex flex-wrap items-center justify-around gap-6 opacity-85 hover:opacity-100 transition font-serif text-base md:text-lg font-semibold tracking-wider text-pinetree px-4">
+                <a href="https://pib.socioambiental.org/pt/Povo:Iny_Karaj%C3%A1" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="hover:text-palecopper transition underline decoration-brandy/60 underline-offset-4 flex items-center gap-1.5"
+                   title="Saiba mais sobre o Povo Iny Karajá no PIB Socioambiental">
+                    <span>KARAJÁ</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-palecopper" aria-hidden="true"></i>
+                </a>
+                <a href="https://pib.socioambiental.org/pt/Povo:Asurini_do_Xingu" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="hover:text-palecopper transition underline decoration-brandy/60 underline-offset-4 flex items-center gap-1.5"
+                   title="Saiba mais sobre o Povo Asuriní do Xingu no PIB Socioambiental">
+                    <span>ASURINÍ</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-palecopper" aria-hidden="true"></i>
+                </a>
+                <a href="https://pib.socioambiental.org/pt/Povo:Wauja" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="hover:text-palecopper transition underline decoration-brandy/60 underline-offset-4 flex items-center gap-1.5"
+                   title="Saiba mais sobre o Povo Wauja no PIB Socioambiental">
+                    <span>WAUJAS</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-palecopper" aria-hidden="true"></i>
+                </a>
+                <a href="https://pib.socioambiental.org/pt/Povo:Guarani" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="hover:text-palecopper transition underline decoration-brandy/60 underline-offset-4 flex items-center gap-1.5"
+                   title="Saiba mais sobre o Povo Guarani no PIB Socioambiental">
+                    <span>GUARANI</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-palecopper" aria-hidden="true"></i>
+                </a>
+                <a href="https://pib.socioambiental.org/pt/Povo:Kadiw%C3%A9u" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="hover:text-palecopper transition underline decoration-brandy/60 underline-offset-4 flex items-center gap-1.5"
+                   title="Saiba mais sobre o Povo Kadiwéu no PIB Socioambiental">
+                    <span>KADIWÉU</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-palecopper" aria-hidden="true"></i>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER VERDE ESCURO COM MARCA D'ÁGUA -->
+    <footer class="bg-pinetree relative py-16 px-6 overflow-hidden mt-20 border-t border-brandy/30">
+        <div class="relative z-10 max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-6 text-xs text-editorial-bg/70 font-light tracking-widest">
+            <div class="flex items-center gap-3">
+                <span class="font-serif text-base text-brandy tracking-wider font-normal">ARTE INDÍGENA BRASILEIRA</span>
+                <span class="text-brandy/40" aria-hidden="true">|</span>
+                <span class="text-[11px] uppercase text-brandy/60">Trabalho feito para fins educativos</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        /* FONT SIZE & THEME CONTROLLERS */
+        let currentFontSize = 100;
+
+        function changeFontSize(delta) {
+            if (delta === 0) {
+                currentFontSize = 100;
+            } else {
+                currentFontSize = Math.min(Math.max(currentFontSize + delta, 85), 135);
+            }
+            document.documentElement.style.fontSize = currentFontSize + '%';
+        }
+
+        function setTheme(theme) {
+            document.body.classList.remove('theme-dark', 'high-contrast');
+            if (theme === 'dark') {
+                document.body.classList.add('high-contrast');
+            }
+        }
+
+        /* AUDIO DESCRIPTION CONTROLLER (WEB SPEECH API) */
+        let currentSpeakingId = null;
+
+        function toggleAudioDescription(elementId, btnElement) {
+            if (!('speechSynthesis' in window)) return;
+
+            // Se o áudio desse mesmo trecho já estiver tocando, interrompe e reseta os botões
+            if (window.speechSynthesis.speaking && currentSpeakingId === elementId) {
+                window.speechSynthesis.cancel();
+                resetAllAudioButtons();
+                return;
+            }
+
+            // Cancela qualquer narração anterior
+            window.speechSynthesis.cancel();
+            resetAllAudioButtons();
+
+            const targetEl = document.getElementById(elementId);
+            if (!targetEl) return;
+
+            const textToRead = targetEl.textContent || targetEl.innerText;
+            const utterance = new SpeechSynthesisUtterance(textToRead);
+            utterance.lang = 'pt-BR';
+            utterance.rate = 0.95;
+
+            currentSpeakingId = elementId;
+
+            // Altera visualmente o botão clicado para indicar opção de Parar
+            if (btnElement) {
+                btnElement.classList.add('bg-palecopper', 'text-pinetree');
+                btnElement.classList.remove('bg-pinetree', 'text-brandy');
+                const icon = btnElement.querySelector('i');
+                const span = btnElement.querySelector('span');
+                if (icon) icon.className = 'fa-solid fa-circle-stop text-pinetree';
+                if (span) span.textContent = 'Parar Audiodescrição';
+            }
+
+            // Quando terminar ou houver erro, restaura o estado padrão
+            utterance.onend = function() {
+                resetAllAudioButtons();
+            };
+
+            utterance.onerror = function() {
+                resetAllAudioButtons();
+            };
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function resetAllAudioButtons() {
+            currentSpeakingId = null;
+            const buttons = document.querySelectorAll('.btn-audio-desc');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-palecopper', 'text-pinetree');
+                btn.classList.add('bg-pinetree', 'text-brandy');
+                const icon = btn.querySelector('i');
+                const span = btn.querySelector('span');
+                if (icon) icon.className = 'fa-solid fa-volume-high text-brandy';
+                if (span) span.textContent = 'Ouvir Audiodescrição';
+            });
+        }
+    </script>
+</body>
+</html>
